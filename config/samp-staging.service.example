@@ -1,0 +1,27 @@
+[Unit]
+Description=NEMQO SA-MP staging server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=samp
+Group=samp
+WorkingDirectory=/opt/nemqo-samp/staging
+ExecStart=/opt/nemqo-samp/staging/samp03svr
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/nemqo-samp/staging
+MemoryMax=512M
+LimitNOFILE=4096
+
+# Keep this unit disabled by default. Start it manually for validation.
+[Install]
+WantedBy=multi-user.target

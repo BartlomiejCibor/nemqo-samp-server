@@ -1,0 +1,8 @@
+ca-certificates
+curl
+tar
+python3
+sqlite3
+libc6-i386
+lib32gcc-s1
+lib32stdc++6

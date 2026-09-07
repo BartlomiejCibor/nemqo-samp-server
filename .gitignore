@@ -1,9 +1,13 @@
-# Compiled binaries and server executables
+# Compiled binaries and official server executables
 *.amx
 samp03svr
 samp-npc
 announce
 plugins/*.so
+
+# The two reviewed prebuilt AMX files are intentionally distributable.
+!server-files/gamemodes/nemqo_freeroam_dm.amx
+!server-files/npcmodes/ambient_walk.amx
 
 # Runtime configuration and secrets
 server.cfg
@@ -13,7 +17,12 @@ server-*.cfg
 *.pem
 *.key
 id_rsa*
+id_ed25519*
 authorized_keys
+
+# Sanitized templates are safe to track.
+!config/server.cfg.example
+!server-files/server.cfg.example
 
 # Player data and SQLite runtime files
 scriptfiles/
@@ -23,6 +32,10 @@ scriptfiles/
 *.sqlite
 *.sqlite3
 
+# Only brand-new databases generated from database/schema.sql are allowed.
+!database/accounts.clean.db
+!server-files/scriptfiles/accounts.db
+
 # Logs, crashes and process state
 *.log
 server_log.txt
@@ -31,7 +44,7 @@ core
 core.*
 *.pid
 
-# Builds, releases, staging and backups
+# Local builds, staging, backups and archives
 build/
 dist/
 releases/
@@ -49,6 +62,8 @@ backups/
 .DS_Store
 .vscode/
 .idea/
+__pycache__/
+*.pyc
 
 # Local deployment scripts and credentials
 deploy-local*.sh
